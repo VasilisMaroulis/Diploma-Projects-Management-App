@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+	<title>Login</title>
+</head>
+
+<style>h3 {text-align: center;text-shadow:4px 4px 7px #0FC59E}</style>
+<body style="background-color:#28282B">
+
+<body>
+<font color = "white">
+
+<div class="container">
+<br>
+    <h3>LOG IN</h3>
+
+	<form th:action="@{/login}"  method="POST" >
+	       
+	  <div class="form-group">
+	    <label >&nbsp;User Name</label>
+	    <input style = "border: 2px; border-radius: 100px;"   type="text" class="form-control" name="username"  placeholder="Enter Username"><br /><br />
+	  </div>
+	  <div class="form-group">
+	    <label> &nbsp;Password</label>
+	    <input style = "border: 2px; border-radius: 100px;"  type="password" class="form-control"  name="password"  placeholder="Enter Password"> <br /><br />
+	     <button style = "border-radius: 100px;" type="Submit" class="btn btn-success btn-lg btn-block"><i class="bi bi-box-arrow-in-right"></i> Log in </button> <br /><br />
+	  </div>
+	  
+	   
+	    <a style = "border-radius: 100px;" th:href="@{register}" class="btn btn-primary btn-lg btn-block"><i class="bi bi-pencil-square"></i> Register </a><br />
+	    
+	    <div th:if="${param.error}"><p>Username or Password is invalid.</p></div> <br/>
+	
+		<span th:utext="${successMessage}"></span>
+	</form>
+</div>
+</font>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    
+    <!-- Set the Character set for the page -->
+    <meta charset="utf-8">
+    
+    <!-- Let the page adapt to client device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Link to external resource (css, search, etc.) -->
+    <!-- Link to Bootstrap CSS in this case -->
+   <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+	
+	<title>Supervise</title>
+
+</head>
+
+<style>h2 {text-align: center;} </style>
+<body style="background-color:#28282B">
+
+
+<body>
+<font color = "white">
+
+<div class="container">
+<br>
+  <h2><a th:href="@{/professor/dashboard}" class="btn btn-outline-primary btn-sm mb-0"><i class="bi bi-house-door-fill"></i> Home</a>
+  &nbsp; &nbsp; &nbsp; &nbsp;   Current diploma theses
+  &nbsp; &nbsp; &nbsp; &nbsp;<a th:href="@{/login}" class="btn btn-outline-danger btn-sm mb-0" onclick="if (!(confirm('Are you sure you want to log out?'))) return false"> Logout&nbsp; <i class="bi bi-box-arrow-in-left"></i></a>
+ </h2>
+  
+ <hr> <br> <br>
+	
+	
+				   
+						 
+	<table class="table table-bordered table-striped" style="width:100%">
+		<thead class="thead-light">
+			<tr style="height:10px">
+			   
+				<th style="width:20%">Student</th>
+				<th style="width:25%">Subject</th>
+				<th style="width:5%">Implementation grade</th>
+				<th style="width:5%">Presentation grade </th>
+				<th style="width:5%">Report grade </th>
+				<th style="width:5%">Total grade </th>
+				<th style="width:10%">Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="takis:${theses}">
+			
+				<td  th:text="${takis.student.firstName} +' '+ ${takis.student.lastName}" />
+				<td  th:text="${takis.subject.title}" />
+				<td  th:text="${takis.implGrade}" />	
+				<td  th:text="${takis.presGrade}" />	
+				<td  th:text="${takis.reportGrade}" />		
+				<td  th:text="${takis.totalGrade}" />		
+			
+			<td>
+			<!-- Add "update" button/link -->
+					<a th:href="@{/professor/theses/grades(thesisId=${takis.id})}"
+					   class="btn btn-info btn-sm"><i class="bi bi-calculator"></i>
+						Grades
+					</a>
+			
+			</td>
+			</tr>
+		</tbody>		
+	</table>
+	
+
+</div>
+</font>
+</body>
+</html>
